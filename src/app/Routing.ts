@@ -12,17 +12,17 @@ import {AuthGuardGuard} from './auth-guard.guard'
 import {ActivatechildGuard} from './activatechild.guard'
 import {CanActivateRouteGuard} from './deactivate.guard'
 
-
-import { importExpr } from '@angular/compiler/src/output/output_ast';
-export const Approutes: Routes = [  
-            { path: '', component: HomeComponent},  
-            { path: 'Home', component: HomeComponent},  
-            { path: 'merchant', component: MerchantComponent,canActivate:[AuthGuardGuard] },  
-            {path: 'admin', component: AdminComponent,canActivate:[AuthGuardGuard] } , 
-            {path:'customer',component:CustomerComponent,canActivateChild:[ActivatechildGuard]
-        ,children:[{path:'customeredit',component:EditCustomerComponent},
-                   {path:'customeradd',component:AddCustomerComponent} 
-    ]
-        }
-    ]  
+export const Approutes: Routes = 
+           [  
+                 { path: '', component: HomeComponent},  
+                 { path: 'Home', component: HomeComponent},  
+                 { path: 'merchant', component: MerchantComponent,canDeactivate:[CanActivateRouteGuard] },  
+                 {path: 'admin', component: AdminComponent,canActivate:[AuthGuardGuard] } , 
+                    {
+                      path:'customer',component:CustomerComponent,canActivateChild:[ActivatechildGuard]
+                      ,children:[{path:'customeredit',component:EditCustomerComponent},
+                      {path:'customeradd',component:AddCustomerComponent} 
+                                ]
+                    }
+            ]  
 

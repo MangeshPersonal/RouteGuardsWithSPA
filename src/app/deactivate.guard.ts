@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 
 import { CustomerComponent } from './customer/customer.component';
-
+import {MerchantComponent} from './merchant/merchant.component'
+import { Window } from 'selenium-webdriver';
 @Injectable()
-export class CanActivateRouteGuard implements CanDeactivate<CustomerComponent> {
+export class CanActivateRouteGuard implements CanDeactivate<MerchantComponent> {
   canDeactivate(component: CustomerComponent): boolean {
   
-    if (component.formCompleted) {
-      return confirm('You have some pending changes on the form ? ');
-    }
-    return true;
+   return window.confirm("Ae you sure to navigate ! ?");
   }
 }
